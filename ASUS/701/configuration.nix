@@ -4,8 +4,9 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [ 
+      ./hardware-configuration.nix  # Include the results of the hardware scan.
+      ./retro-gaming.nix            # Enables retro gaming
     ];
 
   # Use the GRUB 2 boot loader.
@@ -40,7 +41,7 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    vim tmux byobu
+    vim tmux byobu 
   ];
 
   programs.zsh.enable = true; # Enable zsh  
