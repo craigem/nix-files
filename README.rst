@@ -1,5 +1,5 @@
-Minecraft Tools
-===============
+Nix Files
+=========
 
 My collection of NixOS_ configuration and custom Nix_ derivations I've written and used that aren't quite up to being their own thing.
 
