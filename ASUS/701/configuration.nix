@@ -4,7 +4,7 @@
 
 {
   imports =
-    [ 
+    [
       ./hardware-configuration.nix  # Include the results of the hardware scan.
       ./retro-gaming.nix            # Enables retro gaming
     ];
@@ -34,17 +34,17 @@
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
-    defaultLocale = "en_AU.UTF-8"; 
+    defaultLocale = "en_AU.UTF-8";
   };
 
   time.timeZone = "Australia/Brisbane";
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    vim tmux byobu 
+    vim tmux byobu
   ];
 
-  programs.zsh.enable = true; # Enable zsh  
+  programs.zsh.enable = true; # Enable zsh
 
   # List services that you want to enable:
 
@@ -58,6 +58,10 @@
   users.defaultUserShell = pkgs.zsh; # Set the default shell for all users
   users.mutableUsers = false;        # Remove any users not defined in here
 
+  users.users.root.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDtjE0YstRzlh+Zhlj03th9DYOkMqJ5xHUcderBq151K craige@mcwhirter.io"
+  ];
+
   # Groups to add
   users.groups.craige.gid = 1000;
 
@@ -65,13 +69,10 @@
   users.users.craige = {
     isNormalUser = true;
     uid = 1000;
-    group = "craige"   
+    group = "craige";
     extraGroups = ["wheel" ];
-    openssh.authorizedKeys.keyFiles = [
-      (builtins.fetchurl {
-        url = "https://git.mcwhirter.io/craige.keys";
-        # sha512 = "8b0c6b3959a78152a802679ce310f86654b1c74f60f8d29291f5629d361b5227c37147d113a06682e44e5d4120527c1e32244e80c0563764caf2d7bd6341e932"
-      })
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDtjE0YstRzlh+Zhlj03th9DYOkMqJ5xHUcderBq151K craige@mcwhirter.io"
     ];
   };
 
@@ -80,7 +81,7 @@
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "18.09"; # Did you read the comment?
-  system.autoUpgrade.enable = true; 
+  system.autoUpgrade.enable = true;
   system.autoUpgrade.channel = https://nixos.org/channels/nixos-18.09;
 
 }
