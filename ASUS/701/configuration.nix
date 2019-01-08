@@ -58,9 +58,12 @@
   users.defaultUserShell = pkgs.zsh; # Set the default shell for all users
   users.mutableUsers = false;        # Remove any users not defined in here
 
-  users.users.root.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDtjE0YstRzlh+Zhlj03th9DYOkMqJ5xHUcderBq151K craige@mcwhirter.io"
-  ];
+  users.users.root = {
+    hashedPassword = "$6$kH8RIgIarr$4U3pErme9EbwbdJuQlo/SB8L5gg1EU5BiilH.RE5Dtw/9tUeh6AtungyX/WeIS5PRpWvcnsfIEttnq/OyxbOc/";
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDtjE0YstRzlh+Zhlj03th9DYOkMqJ5xHUcderBq151K craige@mcwhirter.io"
+    ];
+  };
 
   # Groups to add
   users.groups.craige.gid = 1000;
@@ -71,6 +74,7 @@
     uid = 1000;
     group = "craige";
     extraGroups = ["wheel" ];
+    hashedPassword = "$6$TbF3Qpo5FbFdD0$NKQQOXIE/uVxuK0nELO1pi7d3Y0o.FWi8dGA5gFkwNqe.YMTPWATkTfO3WD3Ped61ueRMeHGBGjY.ke2jphyo1";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDtjE0YstRzlh+Zhlj03th9DYOkMqJ5xHUcderBq151K craige@mcwhirter.io"
     ];
