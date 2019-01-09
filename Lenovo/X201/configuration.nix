@@ -6,6 +6,7 @@
   imports =
     [
       ./hardware-configuration.nix  # Include the results of the hardware scan.
+      ./users-hamish.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -13,8 +14,8 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "iolair-beag";        # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "iolair-beag";      # Define your hostname.
+  networking.networkmanager.enable = true;  # Enables network support via NetworkManager.
 
   # Select internationalisation properties.
   i18n = {
@@ -34,8 +35,9 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.xserver.enable = true;
+  services.xserver.desktopManager.gnome3.enable = true;
 
   # Enable sound.
   # sound.enable = true;
@@ -59,7 +61,7 @@
     isNormalUser = true;
     uid = 1000;
     group = "craige";
-    extraGroups = ["wheel" ];
+    extraGroups = ["wheel" "networkmanager" ];
     hashedPassword = "$6$Dm/8qURprNY$5MS7BlOqwOdduyi.r9uG3uUnLYQMusNO35sTkDz2ooG8ED6YaRleEnTIeag/Y3tQdkmh9D.XJxDJ0vUcr58f1/";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDtjE0YstRzlh+Zhlj03th9DYOkMqJ5xHUcderBq151K craige@mcwhirter.io"
