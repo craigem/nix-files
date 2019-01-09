@@ -4,6 +4,8 @@
 
 {
 
+  users.groups.hamish.gid = 1001;
+
   users.users.hamish = {
     isNormalUser = true;
     uid = 1001;
