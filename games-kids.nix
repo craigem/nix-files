@@ -10,7 +10,7 @@
     freedroidrpg    # Isometric 3D RPG similar to game Diablo
     gcompris        # Educational software suite, kids aged 2 to 10
     jre             # Required by Minecraft (via multimc)
-    lincity         # City simulation game
+    lincity_ng      # City building game
     minetest        # Infinite-world block sandbox game
     multimc         # Minecraft launcher
     nethack-qt      # Rogue-like game
