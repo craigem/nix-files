@@ -7,6 +7,7 @@
     [
       ./hardware-configuration.nix  # Include the results of the hardware scan.
       ./users-hamish.nix
+      ./games-kids.nix
     ];
 
   # Use the GRUB 2 boot loader.
