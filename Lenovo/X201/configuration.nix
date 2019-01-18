@@ -7,6 +7,7 @@
     [
       ./hardware-configuration.nix  # Include the results of the hardware scan.
       ./users-hamish.nix
+      ./users-logan.nix
       ./games-kids.nix
     ];
 
