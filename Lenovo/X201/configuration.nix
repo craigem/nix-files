@@ -6,9 +6,11 @@
   imports =
     [
       ./hardware-configuration.nix  # Include the results of the hardware scan.
+      ./common-desktop.nix
       ./users-hamish.nix
       ./users-logan.nix
       ./games-kids.nix
+      ./retro-gaming.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -35,11 +37,26 @@
 
   programs.zsh.enable = true; # Enable zsh
 
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    #extraModules = [ pkgs.pulseaudio-modules-bt ];
+    package = pkgs.pulseaudioFull;
+  };
+  hardware.opengl.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.extraConfig = "
+    [General]
+    Enable=Source,Sink,Media,Socket
+  ";
+
   # List services that you want to enable:
 
   services.openssh.enable = true;
   services.xserver.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Enable sound.
   # sound.enable = true;
