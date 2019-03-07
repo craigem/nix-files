@@ -5,7 +5,7 @@ My collection of NixOS_ configurations and custom Nix_ derivations I've written 
 
 The canonical home for this repo is https://git.mcwhirter.io/craige/nix-files
 
-.. image:: https://mcwhirter.com.au/files/lp_daote.svg
+.. image:: https://mcwhirter.com.au/files/lp_donate.svg
    :target: https://liberapay.com/craige/donate
 
 .. _NixOS: https://nixos.org/
