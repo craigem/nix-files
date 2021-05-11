@@ -41,7 +41,11 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    vim tmux byobu
+    vim
+    tmux
+    byobu
+    SDL
+    SDL2
   ];
 
   programs.zsh.enable = true; # Enable zsh
@@ -52,8 +56,17 @@
   services.openssh.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    #extraModules = [ pkgs.pulseaudio-modules-bt ];
+    package = pkgs.pulseaudioFull;
+  };
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.extraConfig = "
+    [General]
+    Enable=Source,Sink,Media,Socket
+  ";
 
   users.defaultUserShell = pkgs.zsh; # Set the default shell for all users
   users.mutableUsers = false;        # Remove any users not defined in here
